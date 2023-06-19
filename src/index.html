@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typing Invaders</title>
+    <link rel="icon" type="image/x-icon" href="resources/favicon.png">
+    <link rel="stylesheet" href="styles/index-styles.css">
+</head>
+<body>
+    <img class="background" src="resources/back.jpg" alt="Space background">
+    <div id="playWindow">
+    <ul id="mainMenu">
+        <li id="newGame">New game</li>
+        <li id="statisticsButton">Statistics</li>
+        <li id="loadText">Load your own text</li>
+    </ul>
+        <div id="playArea" >
+            <div id="button" style="display: none">
+                <svg id="pauseButton" height="27px" width="27px"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#bab5b5">
+                    <g stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5L20 19C20 20.6569 18.6569 22 17 22L16 22C14.3431 22 13 20.6569 13 19L13 5C13 3.34314 14.3431 2 16 2L17 2C18.6569 2 20 3.34315 20 5Z" fill="#323232"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 2C9.65685 2 11 3.34315 11 5L11 19C11 20.6569 9.65685 22 8 22L7 22C5.34315 22 4 20.6569 4 19L4 5C4 3.34314 5.34315 2 7 2L8 2Z" fill="#323232">
+                        </path>
+                    </g>
+                </svg>
+                <svg fill="#323232" height="24px" style="display: none" width="24px" id="playButton" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 550 550" xml:space="preserve" stroke="#bab5b5" stroke-width="30">
+                    <g stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g>
+                            <g>
+                                <path d="M500.203,236.907L30.869,2.24c-6.613-3.285-14.443-2.944-20.736,0.939C3.84,7.083,0,13.931,0,21.333v469.333 c0,7.403,3.84,14.251,10.133,18.155c3.413,2.112,7.296,3.179,11.2,3.179c3.264,0,6.528-0.747,9.536-2.24l469.333-234.667 C507.435,271.467,512,264.085,512,256S507.435,240.533,500.203,236.907z"></path>
+                            </g>
+                        </g>
+                </svg>
+            </div>
+            <div id="volumeButton">
+                <svg id="volume-on" xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" fill="#323232"  viewBox="0 0 16 16" stroke="#bab5b5">
+                    <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12V4zm3.025 4a4.486 4.486 0 0 1-1.318 3.182L10 10.475A3.489 3.489 0 0 0 11.025 8 3.49 3.49 0 0 0 10 5.525l.707-.707A4.486 4.486 0 0 1 12.025 8z"/>
+                </svg>
+                <svg id="volume-off" xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" fill="#323232"  viewBox="0 0 16 16" stroke="#bab5b5" display="none">
+                    <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </div>
+            <div class="progress-bar"></div>
+            <ul class="pauseMenu">
+                <li class="pauseMenuRow" id="restartButton">Restart</li>
+                <li class="pauseMenuRow" id="backToMenuButton">Back to menu</li>
+            </ul>
+            <ul id="messageContainer">
+                <li class="message">Game Over</li>
+                <li class="message">Press Space</li>
+            </ul>
+        </div>
+    </div>
+    <div class="statisticsTable">
+        <table >
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Key Matches</th>
+                    <th>Key Misses</th>
+                    <th>Words filled</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="scroll-table-body">
+            <table>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div id="overlay">
+        <div class="overlayMessage">
+            <h1>The game does not work at this resolution :(</h1>
+            <p>Supported resolution: 620x720 px.</p>
+            <p>Please increase the size of the browser window to launch the game.</p>
+        </div>
+    </div>
+<audio id="themeAudio" autoplay>
+    <source src="resources/theme.wav" type="audio/wav">
+    Your browser does not support the audio element.
+</audio>
+<audio id="explosionSound" src="resources/explosion.wav"></audio>
+<audio id="winSound" src="resources/win_sound.wav"></audio>
+<audio id="looseSound" src="resources/loose_sound.wav"></audio>
+<script src="core/jquery364.min.js"></script>
+<script src="core/TextManager.js"></script>
+<script src="core/Statistics.js"></script>
+<script src="core/InteractionManager.js"></script>
+<script src="core/defs.js"></script>
+<script src="core/Size.js"></script>
+<script src="core/Stars.js"></script>
+<script src="core/Point.js"></script>
+<script src="core/Rectangle.js"></script>
+<script src="core/Sprite.js"></script>
+<script src="core/Player.js"></script>
+<script src="core/Bullet.js"></script>
+<script src="core/Asteroid.js"></script>
+<script src="core/Explosions.js"></script>
+<script src="core/utils.js"></script>
+<script src="core/main-page.js"></script>
+</body>
+</html>
+
+
