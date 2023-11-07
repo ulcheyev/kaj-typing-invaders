@@ -1,7 +1,7 @@
 # Semestrální práce z předmětu KAJ - Typing Invaders
 Semestrální práce je věnována aplikaci, která uživateli pomůže zlepšit své dovednosti v psaní na klávesnici a zábavně strávit volný čas.
 Aplikace je ve formě hry, kde uživatel ovládá kosmickou loď a ničí asteroidy, které reprezentují slova.
-Aplikace bude mít hlavní menu, ve kterém je:
+Aplikace má hlavní menu, ve kterém je:
 
 ## Tlačítko "New Game"
 Spouští novou hru.
